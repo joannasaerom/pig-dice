@@ -1,34 +1,42 @@
-#player0Win{
+#player0Win {
   display: none;
 }
-#player1Win{
+#player1Win {
   display: none;
 }
-#gameScreen{
+#gameScreen {
   display: none;
 }
-#startScreen{
+#startScreen {
   margin: 0 auto;
   text-align: center;
 }
 h1{
   text-align: center;
 }
-#gameScreen{
+#gameScreen {
   margin: 0 auto;
   text-align: center;
 }
-#rollButton{
+#rollButton {
   margin-top: 100px;
 }
-.dieValue{
+.dieValue {
   font-size: 3em;
+}
+.background {
+  background-color: crimson;
 }
 #player1Win, #player0Win{
   text-align: center;
 }
-.rules{
+.rules {
   text-align: left;
   max-width: 700;
   margin-left: 22%;
+}
+.playAgain:hover {
+  cursor: pointer;
+  color: crimson;
+  text-decoration: underline;
 }
