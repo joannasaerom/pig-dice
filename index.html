@@ -11,42 +11,57 @@
   <body>
     <div class="container">
       <h1>Pig Dice</h1>
-      <div id="startScreen">
+      <div id="startScreen" class="row">
         <form>
-          <label for="name0">Player 1:</label>
-          <input type="text" name="name0" placeholder="Enter your name" id="name0">
-          <label for="name1">Player 2:</label>
-          <input type="text" name="name1" placeholder="Enter your name" id="name1">
+          <div class="col-md-6">
+            <label for="name0">Player 1:</label>
+            <input type="text" name="name0" placeholder="Enter your name" id="name0">
+          </div>
+          <div class="col-md-6">
+            <label for="name1">Player 2:</label>
+            <input type="text" name="name1" placeholder="Enter your name" id="name1">
+          </div>
           <button id="startButton" type="submit" name="button" class="btn btn-default">Start Game!</button>
         </form>
         <div class="rules">
-          <p>The rules...</p>
+          <h4>The rules...</h4>
+          <ul>
+            <li>Each turn, a player repeatedly rolls a die until either a 1 is rolled or the player decides to "hold"</li>
+            <li>If player gets a 1, they receive no points and the next player will go</li>
+            <li>If player receives any number other than 1, it is added to their turn total and the player continues to roll</li>
+            <li>If a player chooses to "hold", their turn total is added to their total score and the next player will go.</li>
+            <li>The first player to hit 100 wins</li>
+          </ul>
         </div>
       </div>
-      <div id="gameScreen">
-        <div class="player0">
-          <h2 id="player0Name"></h2>
-          <h3 id="player0Currently"></h3>
-          <h3 id="player0Total"></h3>
+      <div id="gameScreen" class="row">
+        <div class="player0 col-md-5">
+          <h2 class="player0Name"></h2>
           <img src="img/pig.jpg">
+          <h3>Current: <span id="player0Currently"></span></h3>
+          <h3>Total: <span id="player0Total"></span></h3>
         </div>
-        <div class="player1">
-          <h2 id="player1Name"></h2>
-          <h3 id="player1Currently"></h3>
-          <h3 id="player1Total"></h3>
+        <div class="col-md-2">
+          <button id="rollButton" type="button" name="button" class="btn btn-default">Roll</button>
+          <p class="dieValue"></p>
+          <button id="holdButton" type="button" name="button" class="btn btn-default">Hold</button>
+        </div>
+        <div class="player1 col-md-5">
+          <h2 class="player1Name"></h2>
           <img src="img/pig.jpg">
+          <h3>Current: <span id="player1Currently"></span></h3>
+          <h3>Total: <span id="player1Total"></span></h3>
         </div>
-        <button id="rollButton" type="button" name="button" class="btn btn-default">Roll</button>
-        <p class="dieValue"></p>
-        <button id="holdButton" type="button" name="button" class="btn btn-default">Hold</button>
       </div>
       <div id="player0Win">
-        <h2>Winner</h2>
-        <p> Blah</p>
+        <h2><span class="player0Name"></span>, you are the winner!</h2>
+        <img src="img/winner.png">
+        <p>Pigs around the world will forever hold you in the highest regard. You are now Lord Piggly.</p>
       </div>
       <div id="player1Win">
-        <h2>Winner</h2>
-        <p> Blah</p>
+        <h2><span class="player1Name"></span>, you are the winner!</h2>
+        <img src="img/winner.png">
+        <p>Pigs around the world will forever hold you in the highest regard. You are now Lord Piggly.</p>
       </div>
     </div>
   </body>

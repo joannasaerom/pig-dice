@@ -4,3 +4,31 @@
 #player1Win{
   display: none;
 }
+#gameScreen{
+  display: none;
+}
+#startScreen{
+  margin: 0 auto;
+  text-align: center;
+}
+h1{
+  text-align: center;
+}
+#gameScreen{
+  margin: 0 auto;
+  text-align: center;
+}
+#rollButton{
+  margin-top: 100px;
+}
+.dieValue{
+  font-size: 3em;
+}
+#player1Win, #player0Win{
+  text-align: center;
+}
+.rules{
+  text-align: left;
+  max-width: 700;
+  margin-left: 22%;
+}

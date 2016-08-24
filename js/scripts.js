@@ -29,8 +29,9 @@ $(function() {
     var name1 = $("#name1").val();
     var player0 = new Player(name0);
     var player1 = new Player(name1);
-    $("#player0Name").text(player0.name);
-    $("#player1Name").text(player1.name);
+    $("#gameScreen").fadeIn(1000);
+    $(".player0Name").text(player0.name);
+    $(".player1Name").text(player1.name);
 
     $("#rollButton").click(function(){
       if(counter % 2 === 0) {
