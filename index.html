@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script type="text/javascript" src="js/jquery-3.1.0.js"></script>
+    <script type="text/javascript" src="js/scripts.js"></script>
+    <link rel="stylesheet" href="css/bootstrap.min.css" media="screen" title="no title" charset="utf-8">
+    <link rel="stylesheet" href="css/styles.css" media="screen" title="no title" charset="utf-8">
+    <meta charset="utf-8">
+    <title>Pig Dice</title>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Pig Dice</h1>
+      <div id="startScreen">
+        <form>
+          <label for="name0">Player 1:</label>
+          <input type="text" name="name0" placeholder="Enter your name" id="name0">
+          <label for="name1">Player 2:</label>
+          <input type="text" name="name1" placeholder="Enter your name" id="name1">
+          <button id="startButton" type="submit" name="button" class="btn btn-default">Start Game!</button>
+        </form>
+        <div class="rules">
+          <p>The rules...</p>
+        </div>
+      </div>
+      <div id="gameScreen">
+        <div class="player0">
+          <h2 id="player0Name"></h2>
+          <h3 id="player0Currently"></h3>
+          <h3 id="player0Total"></h3>
+          <img src="img/pig.jpg">
+        </div>
+        <div class="player1">
+          <h2 id="player1Name"></h2>
+          <h3 id="player1Currently"></h3>
+          <h3 id="player1Total"></h3>
+          <img src="img/pig.jpg">
+        </div>
+        <button id="rollButton" type="button" name="button" class="btn btn-default">Roll</button>
+        <p class="dieValue"></p>
+        <button id="holdButton" type="button" name="button" class="btn btn-default">Hold</button>
+      </div>
+      <div id="player0Win">
+        <h2>Winner</h2>
+        <p> Blah</p>
+      </div>
+      <div id="player1Win">
+        <h2>Winner</h2>
+        <p> Blah</p>
+      </div>
+    </div>
+  </body>
+</html>
