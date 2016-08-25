@@ -26,9 +26,11 @@ Player.prototype.hold = function() {
 $(function() {
   function playerTurn(turnPlayer, otherPlayer) {
     $("#" + otherPlayer + "Turn").text("");
-    $("#" + turnPlayer + "Turn").text("Your Turn");
-    $("." + otherPlayer).removeClass("background");
-    $("." + turnPlayer).addClass("background");
+    $("#" + turnPlayer + "Turn").html("<h1>Your Turn</h1>");
+    $("." + otherPlayer + " img").removeClass("animated zoomIn");
+    $("." + otherPlayer + " img").addClass("desaturate");
+    $("." + turnPlayer + " img").addClass("animated zoomIn");
+    $("." + turnPlayer + " img").removeClass("desaturate");
   }
 
   $("form").submit(function(event) {
@@ -54,6 +56,7 @@ $(function() {
       playerTurn("player0", "player1");
 
       $("#rollButton").click(function(){
+        $("#rollButton").toggleClass("animated shake");
         if(counter % 2 === 0) {
           player0.roll();
           $(".dieValue").text(player0.dieRoll);
@@ -143,6 +146,7 @@ $(function() {
         playerTurn("player1", "player0");
       }
       $("#rollButton").click(function(){
+        $("#rollButton").toggleClass("animated shake");
         if(counter % 2 === 0) {
           player0.roll();
           $(".dieValue").text(player0.dieRoll);
@@ -150,7 +154,7 @@ $(function() {
           if (player0.dieRoll === 1) {
             playerTurn("player1", "player0");
           }
-          if(player0.total + player0.currently >= 100) {
+          if(player0.total + player0.currently >= 10) {
             $("#gameScreen").slideUp();
             $("#player0Win").show()
           }
@@ -162,7 +166,7 @@ $(function() {
           if (player1.dieRoll === 1) {
             playerTurn("player0", "player1");
           }
-          if(player1.total + player1.currently >= 100) {
+          if(player1.total + player1.currently >= 10) {
             $("#gameScreen").slideUp();
             $("#player1Win").show()
           }
@@ -174,7 +178,7 @@ $(function() {
           $("#player0Currently").text(player0.currently);
           $("#player0Total").text(player0.total);
           playerTurn("player1", "player0");
-          if(player0.total >= 100) {
+          if(player0.total >= 10) {
             $("#gameScreen").slideUp();
             $("#player0Win").show()
           }
@@ -184,7 +188,7 @@ $(function() {
           $("#player1Currently").text(player1.currently);
           $("#player1Total").text(player1.total);
           playerTurn("player0", "player1");
-          if(player1.total >= 100) {
+          if(player1.total >= 10) {
             $("#gameScreen").slideUp();
             $("#player1Win").show()
           }
