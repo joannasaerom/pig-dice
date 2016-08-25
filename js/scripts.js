@@ -32,17 +32,20 @@ $(function() {
     $("." + turnPlayer + " img").addClass("animated zoomIn");
     $("." + turnPlayer + " img").removeClass("desaturate");
   }
-  function compRoll(player, turnPlayer, otherPlayer) {
+  function winner(winPlayer) {
+    $("#gameScreen").slideUp();
+    $("#" + winPlayer + "Win").show()
+  }
+  function compRoll(player, otherPlayer, turnPlayer) {
     (setTimeout(function() {
       player.dieRoll= player.die1[Math.floor(Math.random()*player.die1.length)];
       if(player.currently < 15 && player.dieRoll !== 1) {
         player.currently += player.dieRoll;
         $(".dieValue").text(player.dieRoll);
         $("#player1Currently").text(player.currently);
-        compRoll(player, turnPlayer, otherPlayer);
-        if(player.total + player.currently >= 100) {
-          $("#gameScreen").slideUp();
-          $("#player1Win").show()
+        compRoll(player, otherPlayer, turnPlayer);
+        if(player.total + player.currently >= 20) {
+          winner(turnPlayer);
         }
       }
       else if(player.dieRoll === 1) {
@@ -50,21 +53,20 @@ $(function() {
         counter++;
         $(".dieValue").text(player.dieRoll);
         $("#player1Currently").text(player.currently);
-        playerTurn(turnPlayer,otherPlayer);
+        playerTurn(otherPlayer,turnPlayer);
       }
       else {
         player.currently += player.dieRoll;
         player.total += player.currently;
-        if(player.total >= 100) {
-          $("#gameScreen").slideUp();
-          $("#player1Win").show()
+        if(player.total >= 20) {
+          winner(turnPlayer);
         }
         player.currently = 0;
         counter++;
         $(".dieValue").text(player.dieRoll);
         $("#player1Currently").text(player.currently);
         $("#player1Total").text(player.total);
-        playerTurn(turnPlayer,otherPlayer);
+        playerTurn(otherPlayer,turnPlayer);
       }
     }, 1000));
   }
@@ -85,7 +87,7 @@ $(function() {
       else {
         var player0 = new Player(name0);
       }
-      var player1 = new Player("computer");
+      var player1 = new Player("Computer");
       $(".player0Name").text(player0.name);
       $(".player1Name").text(player1.name);
       counter = 0;
@@ -102,8 +104,7 @@ $(function() {
             compRoll(player1, "player0", "player1");
           }
           if(player0.total + player0.currently >= 100) {
-            $("#gameScreen").slideUp();
-            $("#player0Win").show()
+            winner("player0");
           }
         }
       });
@@ -114,8 +115,7 @@ $(function() {
         playerTurn("player1", "player0");
         compRoll(player1, "player0", "player1");
         if(player0.total >= 100) {
-          $("#gameScreen").slideUp();
-          $("#player0Win").show()
+          winner("player0");
         }
         counter++;
       });
@@ -139,8 +139,7 @@ $(function() {
             playerTurn("player1", "player0");
           }
           if(player0.total + player0.currently >= 100) {
-            $("#gameScreen").hide();
-            $("#player0Win").show();
+            winner("player0");
           }
         }
         else {
@@ -151,8 +150,7 @@ $(function() {
             playerTurn("player0", "player1");
           }
           if(player1.total + player1.currently >= 100) {
-            $("#gameScreen").hide();
-            $("#player1Win").show();
+            winner("player1");
           }
         }
       });
@@ -163,8 +161,7 @@ $(function() {
           $("#player0Total").text(player0.total);
           playerTurn("player1", "player0");
           if(player0.total >= 100) {
-            $("#gameScreen").hide();
-            $("#player0Win").show();
+            winner("player0");
           }
         }
         else {
@@ -173,8 +170,7 @@ $(function() {
           $("#player1Total").text(player1.total);
           playerTurn("player0", "player1");
           if(player1.total >= 100) {
-            $("#gameScreen").hide();
-            $("#player1Win").show();
+            winner("player1");
           }
         }
         counter++;
