@@ -39,6 +39,7 @@ $(function() {
     var player1 = new Player(name1);
     $("#gameScreen").fadeIn(1000);
     $("#startScreen").slideUp();
+    $("#grass").hide();
     if (player0.name === "" || player1.name === ""){
       if(name0 === "") {
         var player0 = new Player(name1);
@@ -62,30 +63,38 @@ $(function() {
             player1.roll();
             $(".dieValue").text(player1.dieRoll);
             $("#player1Currently").text(player1.currently);
-            // while(player1.dieRoll !== 1 && player1.currently < 15) {
-            //     player1.roll();
-            //     $(".dieValue").text(player1.dieRoll);
-            //     $("#player1Currently").text(player1.currently);
+            while(player1.dieRoll !== 1 && player1.currently < 20) {
+                player1.roll();
+                $(".dieValue").text(player1.dieRoll);
+                $("#player1Currently").text(player1.currently);
+                if(player1.total + player1.currently >= 100) {
+                  $("#gameScreen").slideUp();
+                  $("#player1Win").show()
+                }
+              }
+            //}
+            // debugger;
+            // function rolling (dieRoll, currently) {
+            //     setTimeout(function() {
+            //       debugger;
+            //       player1.roll();
+            //       $(".dieValue").text(dieRoll);
+            //       $("#player1Currently").text(currently);
+            //     }, 1000);
+            //   if(dieRoll !== 1 && currently < 15) {
+            //     rolling(dieRoll, currently);
             //   }
             // }
-            debugger;
-            function rolling (dieRoll, currently) {
-                setTimeout(function() {
-                  debugger;
-                  player1.roll();
-                  $(".dieValue").text(dieRoll);
-                  $("#player1Currently").text(currently);
-                }, 1000);
-              if(dieRoll !== 1 && currently < 15) {
-                rolling(dieRoll, currently);
-              }
-            }
-            if(player1.currently !== 1) {
-              rolling(player1.dieRoll, player1.currently);
-            }
+            // if(player1.currently !== 1) {
+            //   rolling(player1.dieRoll, player1.currently);
+            // }
             if(player1.dieRoll !== 1) {
               player1.hold();
               counter++;
+              if(player1.total >= 100) {
+                $("#gameScreen").slideUp();
+                $("#player1Win").show()
+              }
             }
             $("#player1Total").text(player1.total);
             $("#player1Currently").text(player1.currently);
