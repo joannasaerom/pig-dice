@@ -1,5 +1,5 @@
 body{
-  font-family: 'Hammersmith One', sans-serif;
+  font-family: 'Dosis', sans-serif;
   color: black;
 }
 .container{
@@ -13,6 +13,7 @@ h1{
 }
 .playAgain{
   font-family: 'Permanent Marker', cursive;
+  font-size: 2em;
 }
 .desaturate{
   -webkit-filter: grayscale(100%);
@@ -45,13 +46,13 @@ background: rgba(255, 255, 255, 0.3);
   color: black;
 }
 #rollButton:hover, #holdButton:hover{
-background: rgba(156, 0, 0, 0.5);
+opacity: 0.7;
 }
 label{
   color: white;
 }
 input{
-  border-radius: 5px;
+  border-radius: 3px;
 }
 img#grass{
   position: relative;
@@ -87,9 +88,6 @@ form{
 }
 .dieValue {
   font-size: 3em;
-}
-.background {
-  background-color: crimson;
 }
 #player1Win, #player0Win{
   text-align: center;
