@@ -154,9 +154,9 @@ $(function() {
           if (player0.dieRoll === 1) {
             playerTurn("player1", "player0");
           }
-          if(player0.total + player0.currently >= 10) {
-            $("#gameScreen").slideUp();
-            $("#player0Win").show()
+          if(player0.total + player0.currently >= 100) {
+            $("#gameScreen").hide();
+            $("#player0Win").show();
           }
         }
         else {
@@ -166,9 +166,9 @@ $(function() {
           if (player1.dieRoll === 1) {
             playerTurn("player0", "player1");
           }
-          if(player1.total + player1.currently >= 10) {
-            $("#gameScreen").slideUp();
-            $("#player1Win").show()
+          if(player1.total + player1.currently >= 100) {
+            $("#gameScreen").hide();
+            $("#player1Win").show();
           }
         }
       });
@@ -178,9 +178,9 @@ $(function() {
           $("#player0Currently").text(player0.currently);
           $("#player0Total").text(player0.total);
           playerTurn("player1", "player0");
-          if(player0.total >= 10) {
-            $("#gameScreen").slideUp();
-            $("#player0Win").show()
+          if(player0.total >= 100) {
+            $("#gameScreen").hide();
+            $("#player0Win").show();
           }
         }
         else {
@@ -188,9 +188,9 @@ $(function() {
           $("#player1Currently").text(player1.currently);
           $("#player1Total").text(player1.total);
           playerTurn("player0", "player1");
-          if(player1.total >= 10) {
-            $("#gameScreen").slideUp();
-            $("#player1Win").show()
+          if(player1.total >= 100) {
+            $("#gameScreen").hide();
+            $("#player1Win").show();
           }
         }
         counter++;

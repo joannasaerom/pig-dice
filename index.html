@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="css/animate.css">
     <link rel="stylesheet" href="css/bootstrap.min.css" media="screen" title="no title" charset="utf-8">
     <link href="https://fonts.googleapis.com/css?family=Permanent+Marker" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Catamaran" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Hammersmith+One" rel="stylesheet">
     <link rel="stylesheet" href="css/styles.css" media="screen" title="no title" charset="utf-8">
     <meta charset="utf-8">
     <title>Pig Dice</title>
@@ -17,11 +17,11 @@
       <div id="startScreen" class="row">
         <h1>Pig Dice</h1>
         <form>
-          <div class="col-md-6">
+          <div class="col-xs-6">
             <label for="name0">Player 1:</label>
             <input type="text" name="name0" placeholder="Enter your name" id="name0">
           </div>
-          <div class="col-md-6">
+          <div class="col-xs-6">
             <label for="name1">Player 2:</label>
             <input type="text" name="name1" placeholder="Enter your name" id="name1">
           </div>
@@ -38,54 +38,62 @@
           </ul>
         </div>
       </div>
-
-
       <div id="gameScreen">
         <div class="row">
-          <div class="player0 col-md-5">
+          <div class="player0 col-xs-5">
             <h2 class="player0Name"></h2>
             <img class="img-responsive" src="img/pig1reverse.png">
           </div>
-          <div class="col-md-2">
+          <div class="col-xs-2">
             <br><br>
             <h1>VS</h1>
             <button id="rollButton" type="button" name="button" class="btn btn-default">Roll</button>
             <p class="dieValue"></p>
             <button id="holdButton" type="button" name="button" class="btn btn-default">Hold</button>
           </div>
-          <div class="player1 col-md-5">
+          <div class="player1 col-xs-5">
             <h2 class="player1Name"></h2>
             <img class="img-responsive" src="img/pig1.png">
           </div>
         </div>
         <div class="row">
-          <div class="col-md-5">
+          <div class="col-xs-5">
             <p id="player0Turn"></p>
             <h3>Current: <span id="player0Currently"></span></h3>
             <h3>Total: <span id="player0Total"></span></h3>
           </div>
-          <div class="col-md-2">
+          <div class="col-xs-2">
           </div>
-          <div class="col-md-5">
+          <div class="col-xs-5">
             <p id="player1Turn"></p>
             <h3>Current: <span id="player1Currently"></span></h3>
             <h3>Total: <span id="player1Total"></span></h3>
           </div>
         </div>
       </div>
-
-
-
-
       <div id="player0Win">
         <h2><span class="player0Name"></span>, you are the winner!</h2>
-        <img src="img/winner.png">
+        <div class="row">
+          <div class="col-xs-6">
+            <img src="img/winnerLeft.png" class="img-responsive">
+          </div>
+          <div class="col-xs-6">
+            <img src="img/loserRight.png" class="animated bounceOutUp img-responsive">
+          </div>
+        </div>
         <p>Pigs around the world will forever hold you in the highest regard. You are now Lord Piggly.</p>
         <h3 class="playAgain">Play Again?</h3>
       </div>
       <div id="player1Win">
         <h2><span class="player1Name"></span>, you are the winner!</h2>
-        <img src="img/winner.png">
+        <div class="row">
+          <div class="col-xs-6">
+            <img src="img/loserLeft.png" class="animated bounceOutUp img-responsive">
+          </div>
+          <div class="col-xs-6">
+            <img src="img/winnerRight.png" class="img-responsive">
+          </div>
+        </div>
         <p>Pigs around the world will forever hold you in the highest regard. You are now Lord Piggly.</p>
         <h3 class="playAgain">Play Again?</h3>
       </div>

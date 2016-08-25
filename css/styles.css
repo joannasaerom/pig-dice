@@ -1,5 +1,5 @@
 body{
-  font-family: 'Catamaran', sans-serif;
+  font-family: 'Hammersmith One', sans-serif;
   color: black;
 }
 .container{
@@ -8,7 +8,7 @@ body{
 h1{
   font-family: 'Permanent Marker', cursive;
 }
-.col-md-2 h1{
+.col-xs-2 h1{
   font-size: 5em;
 }
 .playAgain{
@@ -17,6 +17,10 @@ h1{
 .desaturate{
   -webkit-filter: grayscale(100%);
   filter: grayscale(100%);
+}
+h2.player0Name, h2.player1Name{
+  font-size: 3em;
+  font-weight: bolder;
 }
 #player0Win {
   display: none;
@@ -35,6 +39,13 @@ h1{
 }
 #startButton:hover{
 background: rgba(255, 255, 255, 0.3);
+}
+#rollButton, #holdButton{
+  border: 3px solid black;
+  color: black;
+}
+#rollButton:hover, #holdButton:hover{
+background: rgba(156, 0, 0, 0.5);
 }
 label{
   color: white;
@@ -82,6 +93,9 @@ form{
 }
 #player1Win, #player0Win{
   text-align: center;
+}
+#player1Win p, #player0Win p{
+  font-size: 1.5em;
 }
 .rules {
   text-align: left;
