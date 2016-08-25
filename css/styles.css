@@ -85,6 +85,17 @@ form{
 }
 #rollButton {
   margin-top: 50px;
+  width: 90px;
+  height: 90px;
+  background-image: url(../img/dice.png);
+  border-radius: 8px;
+  color: crimson;
+  font-size: 30px;
+  font-weight: bolder;
+  font-family: 'Permanent Marker', cursive;
+}
+#holdButton{
+  font-size: 17px;
 }
 .dieValue {
   font-size: 3em;

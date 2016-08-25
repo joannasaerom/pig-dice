@@ -36,36 +36,51 @@ $(function() {
     $("#gameScreen").slideUp();
     $("#" + winPlayer + "Win").show()
   }
+  function holding (player, otherPlayer, turnPlayer) {
+    player.hold();
+    $("#" + turnPlayer + "Currently").text(player.currently);
+    $("#" + turnPlayer + "Total").text(player.total);
+    playerTurn(otherPlayer, turnPlayer);
+    if(player.total >= 100){
+      winner(turnPlayer);
+    }
+  }
+  function rolling(player, otherPlayer, turnPlayer){
+    player.roll();
+    $(".dieValue").text(player.dieRoll);
+    $("#" + turnPlayer + "Currently").text(player.currently);
+    if (player.dieRoll === 1) {
+      playerTurn(otherPlayer, turnPlayer);
+    }
+    if (player.total + player.currently >= 100) {
+      winner(turnPlayer);
+    }
+  }
   function compRoll(player, otherPlayer, turnPlayer) {
     (setTimeout(function() {
-      player.dieRoll= player.die1[Math.floor(Math.random()*player.die1.length)];
-      if(player.currently < 15 && player.dieRoll !== 1) {
-        player.currently += player.dieRoll;
-        $(".dieValue").text(player.dieRoll);
-        $("#player1Currently").text(player.currently);
-        compRoll(player, otherPlayer, turnPlayer);
-        if(player.total + player.currently >= 20) {
-          winner(turnPlayer);
-        }
+      player.roll();
+      $(".dieValue").text(player.dieRoll);
+      $("#player1Currently").text(player.currently);
+      if(player.total + player.currently >= 100) {
+        winner(turnPlayer);
       }
-      else if(player.dieRoll === 1) {
-        player.currently = 0;
-        counter++;
-        $(".dieValue").text(player.dieRoll);
-        $("#player1Currently").text(player.currently);
-        playerTurn(otherPlayer,turnPlayer);
+      if(player.currently < 15 && player.dieRoll !== 1) {
+        compRoll(player, otherPlayer, turnPlayer);
+      }
+      else if (player.dieRoll === 1) {
+       $("#player1Currently").text(player.currently);
+       $("button").prop("disabled", false);
+       playerTurn(otherPlayer,turnPlayer);
       }
       else {
-        player.currently += player.dieRoll;
-        player.total += player.currently;
-        if(player.total >= 20) {
+        player.hold();
+        if(player.total >= 100) {
           winner(turnPlayer);
         }
-        player.currently = 0;
         counter++;
-        $(".dieValue").text(player.dieRoll);
         $("#player1Currently").text(player.currently);
         $("#player1Total").text(player.total);
+        $("button").prop("disabled", false);
         playerTurn(otherPlayer,turnPlayer);
       }
     }, 1000));
@@ -101,6 +116,7 @@ $(function() {
           $("#player0Currently").text(player0.currently);
           if (player0.dieRoll === 1) {
             playerTurn("player1", "player0");
+            $("button").prop("disabled", true);
             compRoll(player1, "player0", "player1");
           }
           if(player0.total + player0.currently >= 100) {
@@ -113,6 +129,7 @@ $(function() {
         $("#player0Currently").text(player0.currently);
         $("#player0Total").text(player0.total);
         playerTurn("player1", "player0");
+        $("button").prop("disabled", true);
         compRoll(player1, "player0", "player1");
         if(player0.total >= 100) {
           winner("player0");
@@ -132,46 +149,18 @@ $(function() {
       $("#rollButton").click(function(){
         $("#rollButton").toggleClass("animated shake");
         if(counter % 2 === 0) {
-          player0.roll();
-          $(".dieValue").text(player0.dieRoll);
-          $("#player0Currently").text(player0.currently);
-          if (player0.dieRoll === 1) {
-            playerTurn("player1", "player0");
-          }
-          if(player0.total + player0.currently >= 100) {
-            winner("player0");
-          }
+          rolling(player0, "player1", "player0");
         }
         else {
-          player1.roll();
-          $(".dieValue").text(player1.dieRoll);
-          $("#player1Currently").text(player1.currently);
-          if (player1.dieRoll === 1) {
-            playerTurn("player0", "player1");
-          }
-          if(player1.total + player1.currently >= 100) {
-            winner("player1");
-          }
+          rolling(player1, "player0", "player1");
         }
       });
       $("#holdButton").click(function() {
         if(counter % 2 === 0) {
-          player0.hold();
-          $("#player0Currently").text(player0.currently);
-          $("#player0Total").text(player0.total);
-          playerTurn("player1", "player0");
-          if(player0.total >= 100) {
-            winner("player0");
-          }
+          holding(player0, "player1", "player0");
         }
         else {
-          player1.hold();
-          $("#player1Currently").text(player1.currently);
-          $("#player1Total").text(player1.total);
-          playerTurn("player0", "player1");
-          if(player1.total >= 100) {
-            winner("player1");
-          }
+          holding(player1, "player0", "player1");
         }
         counter++;
       });
